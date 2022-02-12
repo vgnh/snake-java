@@ -1,16 +1,15 @@
-package wormgame;
+package snakegame;
 
 import javax.swing.SwingUtilities;
 
-import wormgame.domain.Worm;
-import wormgame.gui.UserInterface;
-import wormgame.game.WormGame;
+import snakegame.gui.UserInterface;
+import snakegame.game.SnakeGame;
 
 public class Main {
 
     public static void main(String[] args) {
         // write test code here
-        WormGame game = new WormGame(20, 20);
+        SnakeGame game = new SnakeGame(20, 20);
 
         UserInterface ui = new UserInterface(game, 20);
         SwingUtilities.invokeLater(ui);

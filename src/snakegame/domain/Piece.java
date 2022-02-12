@@ -1,4 +1,4 @@
-package wormgame.domain;
+package snakegame.domain;
 
 public class Piece {
     private int x;

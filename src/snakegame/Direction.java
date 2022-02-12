@@ -1,4 +1,4 @@
-package wormgame;
+package snakegame;
 
 public enum Direction {
 

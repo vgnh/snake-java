@@ -1,19 +1,19 @@
-package wormgame.gui;
+package snakegame.gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import wormgame.game.WormGame;
+import snakegame.game.SnakeGame;
 
 public class UserInterface implements Runnable {
 
     private JFrame frame;
-    private WormGame game;
+    private SnakeGame game;
     private int sideLength;
 
     private DrawingBoard drawingBoard;
-    public UserInterface(WormGame game, int sideLength) {
+    public UserInterface(SnakeGame game, int sideLength) {
         this.game = game;
         this.sideLength = sideLength;
         this.drawingBoard = null;
@@ -21,7 +21,7 @@ public class UserInterface implements Runnable {
 
     @Override
     public void run() {
-        frame = new JFrame("Worm Game");
+        frame = new JFrame("Snake 1.0");
         int width = (game.getWidth() + 1) * sideLength + 10;
         int height = (game.getHeight() + 2) * sideLength + 10;
 
@@ -42,7 +42,7 @@ public class UserInterface implements Runnable {
 
         container.add(this.drawingBoard);
 
-        frame.addKeyListener(new KeyboardListener(this.game.getWorm()));
+        frame.addKeyListener(new KeyboardListener(this.game.getSnake()));
     }
 
     public Updatable getUpdatable() {

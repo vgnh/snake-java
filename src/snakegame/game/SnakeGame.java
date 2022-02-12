@@ -1,24 +1,24 @@
-package wormgame.game;
+package snakegame.game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.Timer;
-import wormgame.Direction;
-import wormgame.domain.Apple;
-import wormgame.domain.Worm;
-import wormgame.gui.Updatable;
+import snakegame.Direction;
+import snakegame.domain.Apple;
+import snakegame.domain.Snake;
+import snakegame.gui.Updatable;
 
-public class WormGame extends Timer implements ActionListener {
+public class SnakeGame extends Timer implements ActionListener {
 
     private int width;
     private int height;
     private boolean continues;
     private Updatable updatable;
 
-    private Worm worm;
+    private Snake snake;
     private Apple apple;
-    public WormGame(int width, int height) {
+    public SnakeGame(int width, int height) {
         super(1000, null);
 
         this.width = width;
@@ -28,8 +28,8 @@ public class WormGame extends Timer implements ActionListener {
         addActionListener(this);
         setInitialDelay(2000);
 
-        this.worm = new Worm(this.width/2, this.height/2, Direction.DOWN);
-        //Doing this so that the initial coordinate of Apple isn't same as Worm
+        this.snake = new Snake(this.width/2, this.height/2, Direction.DOWN);
+        //Doing this so that the initial coordinate of Apple isn't same as Snake
         int xApple = 0;
         int yApple = 0;
         Random random = new Random();
@@ -60,9 +60,9 @@ public class WormGame extends Timer implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.worm.move();
-            if (this.worm.runsInto(this.apple)) {
-                this.worm.grow();
+        this.snake.move();
+            if (this.snake.runsInto(this.apple)) {
+                this.snake.grow();
 
                 //New apple location
                 Random random = new Random();
@@ -70,28 +70,28 @@ public class WormGame extends Timer implements ActionListener {
                     int xApple = random.nextInt(width);
                     int yApple = random.nextInt(height);
                     this.apple = new Apple(xApple, yApple);
-                } while (this.worm.runsInto(this.apple));
-            } else if (this.worm.runsIntoItself())
+                } while (this.snake.runsInto(this.apple));
+            } else if (this.snake.runsIntoItself())
                 this.continues = false;
             else { //Border condition
-                int wormHeadX = this.worm.getPieces().get(this.getWorm().getLength()-1).getX();
-                int wormHeadY = this.worm.getPieces().get(this.getWorm().getLength()-1).getY();
-                if(wormHeadX<0 || wormHeadY<0 || wormHeadX>=width || wormHeadY>=height)
+                int snakeHeadX = this.snake.getPieces().get(this.getSnake().getLength()-1).getX();
+                int snakeHeadY = this.snake.getPieces().get(this.getSnake().getLength()-1).getY();
+                if(snakeHeadX<0 || snakeHeadY<0 || snakeHeadX>=width || snakeHeadY>=height)
                     this.continues = false;
             }
 
             this.updatable.update();
-            this.setDelay(1000 / this.worm.getLength());
+            this.setDelay(1000 / this.snake.getLength());
             /*if (!continues) {
                 return;
             }*/
     }
 
-    public Worm getWorm() {
-        return this.worm;
+    public Snake getSnake() {
+        return this.snake;
     }
-    public void setWorm(Worm worm) {
-        this.worm = worm;
+    public void setSnake(Snake snake) {
+        this.snake = snake;
     }
     public Apple getApple() {
         return this.apple;

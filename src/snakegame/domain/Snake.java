@@ -1,11 +1,11 @@
-package wormgame.domain;
+package snakegame.domain;
 
-import wormgame.Direction;
+import snakegame.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Worm {
+public class Snake {
     private List<Piece> listOfPieces;
 
     private Direction direction;
@@ -13,7 +13,7 @@ public class Worm {
     private int y;
 
     private boolean growCalled;
-    public Worm(int originalX, int originalY, Direction originalDirection) {
+    public Snake(int originalX, int originalY, Direction originalDirection) {
         this.listOfPieces = new ArrayList<Piece>();
         this.x = originalX;
         this.y = originalY;
@@ -70,7 +70,7 @@ public class Worm {
     }
 
     public void grow() {
-        //Grows the worm by one piece. The worm grows together with the following move method call; after the first move method call the worm does not grow any more.
+        //Grows the snake by one piece. The snake grows together with the following move method call; after the first move method call the snake does not grow any more.
         this.growCalled = true;
     }
 

@@ -1,16 +1,16 @@
-package wormgame.gui;
+package snakegame.gui;
 
-import wormgame.Direction;
-import wormgame.domain.Worm;
+import snakegame.Direction;
+import snakegame.domain.Snake;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardListener implements KeyListener {
-    private Worm worm;
+    private Snake snake;
 
-    public KeyboardListener(Worm worm) {
-        this.worm = worm;
+    public KeyboardListener(Snake snake) {
+        this.snake = snake;
     }
 
     @Override
@@ -21,16 +21,16 @@ public class KeyboardListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.worm.setDirection(Direction.RIGHT);
+            this.snake.setDirection(Direction.RIGHT);
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.worm.setDirection(Direction.LEFT);
+            this.snake.setDirection(Direction.LEFT);
         }
         else if(e.getKeyCode() == KeyEvent.VK_UP) {
-            this.worm.setDirection(Direction.UP);
+            this.snake.setDirection(Direction.UP);
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.worm.setDirection(Direction.DOWN);
+            this.snake.setDirection(Direction.DOWN);
         }
     }
 
